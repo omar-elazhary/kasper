@@ -5,8 +5,11 @@
     padding: 0;
     text-decoration: none;
     --main-color: #19c8fa;
-    --transparent-color: rgb(15 116 143 / 70%); 
-    color: white;
+    --transparent-color: rgb(34 169 205 / 70%);
+    --section-bottom-margin: 78px;
+    --main-transition: 00.3s;
+    --main-border-rudias: 2px;
+    /* color: white; */
 }
 
 html {
@@ -31,11 +34,77 @@ ul {
 
 /* end global rules  */
 
+
+/* start commponants */
+i {
+    color: white;
+}
+
+.services i {
+    color: black;
+}
+
+.special-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
+    margin: 0 auto;
+    padding: 20px;
+    margin-bottom: 30px;
+    /* width: 500px; */
+}
+
+.special-heading>h2 {
+    color: #333;
+    font-size: 50px;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.special-heading>h2::before {
+    content: "";
+    height: 2px;
+    width: 50%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+}
+
+.special-heading>h2::after {
+    content: "";
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    border: solid #333 2px;
+    background-color: white;
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-5px);
+    z-index: 3;
+}
+
+.special-heading>p {
+    text-align: center;
+    max-width: 500px;
+    font-size: 12px;
+    color: #777;
+    padding-top: 20px;
+    line-height: 1.4;
+}
+
+/* end commponants */
+
 /* media quieres */
 @media (min-width: 768px) {
     .container {
         width: 750px
     }
+
     header .container nav ul {
         display: flex;
         /* min-height: 70px; */
@@ -65,28 +134,33 @@ header {
     z-index: 2;
     width: 100%;
 }
+
 header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
 }
+
 header .container::before {
     content: "";
     background-color: #a2a2a2;
     width: calc(100% - 30px);
     height: 1px;
     position: absolute;
-    bottom: 1px; /* reminder to reset this value */
+    bottom: 1px;
+    /* reminder to reset this value */
     left: 15px;
     z-index: -1;
 }
+
 /* end header */
 
 
 /* logo */
 .logo {
-    position: absolute; /* idk */
+    position: absolute;
+    /* idk */
     left: 25px;
     top: 25px;
 }
@@ -102,6 +176,7 @@ header .container::before {
 
 /* start the image " instaed of the solid logo , i made it with CSS step by step " */
 .title {
+
     width: 15px;
     display: flex;
     flex-wrap: wrap;
@@ -122,6 +197,7 @@ header .container::before {
 }
 
 .ghost-title-kasper {
+    color: white;
     font-size: 20px;
 }
 
@@ -135,15 +211,17 @@ nav {
 
 /* the media of mobile display only */
 @media (max-width:768px) {
-    header nav ul{
-       display: none ;   
-    }  
-    header nav .toggle-menu{
-        transform: scale(1.3,1.3);
+    header nav ul {
+        display: none;
+    }
+
+    header nav .toggle-menu {
+        transform: scale(1.3, 1.3);
         transition: 0.4s;
     }
-    header nav .toggle-menu:hover + ul{
-        display: flex ;
+
+    header nav .toggle-menu:hover+ul {
+        display: flex;
         flex-direction: column;
         background-color: rgba(0, 0, 0, 0.5);
         position: absolute;
@@ -152,15 +230,64 @@ nav {
         width: 100%;
         /* border-bottom: ;om: #a2a2a2 1px solid; */
     }
+
     header nav .toggle-menu:hover {
         transform: rotate(90deg);
     }
-    header nav .toggle-menu:hover + ul li a{
+
+    header nav .toggle-menu:hover+ul li a {
         padding: 15px;
     }
-    header nav .toggle-menu + ul li a:hover{
+
+    header nav .toggle-menu+ul li a:hover {
         padding-left: 25px;
     }
+
+    .landing .text {
+        padding: 30px !important;
+        /* display: flex; */
+
+    }
+
+    .arrows {
+        display: none !important;
+    }
+
+    .landing .text {
+        min-width: 100%;
+        padding: 20px 20px !important;
+    }
+
+
+
+    .services .container .services-content .ser {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .services .container .services-content .ser {
+        margin-top: 50px;
+    }
+
+    .services .container .services-content .ser i {
+        margin: 40px;
+    }
+
+
+    .mobile {
+        display: none;
+    }
+
+    .design .design-text {
+        position: absolute;
+        left: 0 !important;
+        width: 100% !important;
+
+    }
+
 }
 
 
@@ -173,107 +300,523 @@ header .container nav ul li a {
     padding: 30px 10px;
     text-transform: uppercase;
 }
+
 header .container nav ul li a:hover {
     color: var(--main-color);
     border-bottom: var(--main-color) 1px solid;
 }
+
 header nav .search {
     padding: 0 20px;
     border-left: white 1px solid;
     margin: 30px 0px 30px 20px;
 }
-@media (min-width:767px) {
+
+@media (min-width:768px) {
     header nav .toggle-menu {
         display: none;
     }
+
+    .services .container .services-content {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(300px, 1fr));
+        gap: 30px;
+    }
+
+    .services .container .services-content .ser {
+        margin: 50px 60px 50px 20px;
+
+    }
 }
+
 /* end header */
 
 
 
 /* start landing */
-.landing{
+.landing {
     min-height: 100vh;
     background-size: cover;
     background-color: dodgerblue;
-    background-image: url(../kasper_images/LANDING.jpg);
+    background-image: url(../kasper_images/landing.jpg);
     position: relative;
     z-index: -1;
+    margin-bottom: var(--section-bottom-margin);
+
 }
-.landing .overlay{
+
+.landing .overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color:  rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.6);
     z-index: 1;
 }
 
-.landing .text{
+.landing .text {
     z-index: 2;
     background-color: var(--transparent-color);
     color: white;
     position: absolute;
     top: 50%;
     left: 0;
-    transform: translate(0,-50%);
-    width: 500px;
-    padding: 20px 20px 20px 130px ;
+    transform: translate(0, -50%);
+    width: 50%;
+    padding: 40px 40px 40px 130px;
     display: flex;
     justify-content: flex-end;
 }
-.landing .content{
+
+/* .landing .content{
    max-width: 500px;
-}
-.landing h2{
+} */
+.landing h2 {
     font-size: 22px;
     font-weight: bold;
     margin-bottom: 10px;
     line-height: 1.5;
 }
-.landing p{
+
+.landing p {
     font-size: 14px;
     line-height: 1.3;
 }
 
-.landing .change-back{
+.landing .change-back {
     position: absolute;
     top: 50%;
     transform: translatey(-50%);
     color: white;
     z-index: 2;
 }
-.landing .left{
-    left: 30px;
-}
-.landing .change-back{
-    right: 30px;
+
+.landing .left {
+    left: 20px;
 }
 
-.landing .bullets{
+.landing .change-back {
+    right: 20px;
+}
+
+.landing .bullets {
     display: flex;
     position: absolute;
     bottom: 20px;
     width: 40px;
+    transform: translateX(-50%);
     left: 50%;
     justify-content: space-between;
     align-items: center;
     z-index: 2;
 }
-.landing .bullets li{
+
+.landing .bullets li {
     width: 10px;
     height: 10px;
     background-color: transparent;
     border-radius: 50%;
     border: white solid 1px;
 }
-.landing .bullets .active{
-background-color: var(--main-color) !important;
+
+.landing .bullets .active {
+    background-color: var(--main-color) !important;
+}
+
+/* end landing */
+
+
+
+/* start serices */
+.services {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--section-bottom-margin);
+}
+
+.services .container {
+    flex-flow: column;
+    flex-wrap: wrap;
+}
+
+.services .services-content .column .ser {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.services .services-content .column i {
+    margin-right: 80px;
+}
+
+.services .services-content .column .ser-text {
+    display: flex;
+    flex-direction: column;
+    /* margin:0 60px 20px 20px; */
+
+}
+
+.services .services-content .column h3 {
+    color: var(--main-color);
+    margin-bottom: 30px;
 }
 
 
+/* end serices */
+
+/* start design */
+
+/****************** you had to revise it*******************/
+
+.design {
+    margin: 50px 0;
+    height: 500px;
+    margin-bottom: var(--section-bottom-margin);
+    background-image: url(../kasper_images/design-background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+}
+
+.design .design-text {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background-color: var(--transparent-color);
+    height: fit-content;
+    width: 100%;
+    padding: 30px;
+    z-index: 3;
+    position: relative;
+    left: 29%;
+    top: 51%;
+    transform: translateY(-50%);
+}
+
+.design .design-text h3 {
+    margin-bottom: 50px;
+    font-size: 22px;
+    text-transform: uppercase;
+}
+
+.design .design-ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.design .design-ul li {
+    padding-bottom: 18px;
+    padding-left: 18px;
+    font-size: 17px;
+    text-transform: capitalize;
+}
+
+.design .design-ul li:before {
+    font-family: 'FontAwesome';
+    content: '\f390';
+    margin: 2px 15px 0 -15px;
+    color: white;
+}
+
+.mobile {
+    position: relative;
+    top: 22%;
+    left: 24%;
+    height: 500px;
+    width: 310px;
+}
 
 
+/* end design */
 
-/* end landing */
+/* start portofolio */
+.portofolio {
+    margin-bottom: calc(var(--section-bottom-margin) - 10px);
+}
+
+.portofolio .ul .shuffle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.portofolio .ul .shuffle li {
+    color: white;
+    margin-left: 3px;
+    margin-right: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: capitalize;
+    background-color: var(--main-color);
+    border: solid 1px var(--main-color);
+    padding: 10px;
+    border-radius: var(--main-border-rudias);
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+/* .portofolio .ul .shuffle li:first-child {
+    background-color: var(--main-color);
+} */
+
+.portofolio .ul .shuffle li:hover {
+    background-color: white;
+    border: solid 1px var(--main-color);
+    color: var(--main-color);
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cards .card {
+    flex-basis: 310px;
+    overflow: hidden;
+    margin: 2px;
+    position: relative;
+    transition: var(--main-transition);
+}
+
+.cards .card:hover img {
+    transform: scale(1.1, 1.1);
+}
+
+.cards .card img {
+    width: 310px;
+    height: 197px;
+    overflow: hidden;
+    position: relative;
+    transition: 0.6s;
+}
+
+.cards .card:hover .text {
+    bottom: 0;
+    left: 0;
+}
+
+.img-con {
+    width: 310px;
+    height: 190px;
+    overflow: hidden;
+}
+
+.cards .card .text {
+    background-color: white;
+    opacity: 0.9;
+    width: 100%;
+    padding: 10px;
+    transition: var(--main-transition);
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    /* display: none; */
+}
+
+.cards .card .text h4 {
+    padding-bottom: 10px;
+}
+
+.portofolio .more-button {
+    display: flex;
+    justify-content: center;
+}
+
+.portofolio a {
+    background-color: var(--main-color);
+    border: solid 1px var(--main-color);
+    font-size: 15px;
+    font-weight: bolder;
+    padding: 7px 20px;
+    border-radius: var(--main-border-rudias);
+    color: white;
+    margin: 30px;
+    transition: 0.3s;
+}
+
+.portofolio a:hover {
+    background-color: white;
+    border: solid 1px var(--main-color);
+    color: var(--main-color);
+}
+
+/* end portofolio */
+
+
+/* start video */
+
+.video-section {
+    margin-bottom: var(--section-bottom-margin);
+    height: 60vh;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.video {
+    transform: translate(0%, -31%);
+    position: relative;
+    z-index: -1;
+}
+
+.video-section .text {
+    z-index: 3;
+    background-color: var(--transparent-color);
+    color: white;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.video-section .text h3 {
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.video-section .text p {
+    margin-bottom: 50px;
+    font-size: 17px;
+    font-weight: 300;
+}
+
+.video-section .text a {
+    color: var(--main-color);
+    background-color: white;
+    border-radius: var(--main-border-rudias);
+    padding: 10px 40px;
+    font-weight: bold;
+    /* border: 3px solid var(--main-color); */
+    transition: var(--main-transition);
+}
+
+.video-section .text a:hover {
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+}
+
+/* end video */
+/* start about  */
+.about {
+    /* margin-bottom:var(--section-bottom-margin); */
+    overflow: hidden;
+}
+
+.about .container {
+    flex-direction: column;
+}
+
+.about img {
+    transform: translatey(160px) translatex(-43px);
+    margin-top: -90px;
+}
+
+@media (max-width:768px) {
+    .about {
+        padding-bottom: 128px;
+    }
+
+    .about img {
+        transform: translatey(180px);
+        margin-top: -180px;
+    }
+}
+
+/* end about  */
+
+
+/* start stats  */
+.stats{
+    margin-bottom: var(--section-bottom-margin);
+    padding: 60px 0;
+    background-image: url(../kasper_images/stats.png);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: -2;
+}
+.stats::before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.702);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+.stats .container{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+.stats .container .box{
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--transparent-color);
+}
+@media (max-width:767px) {
+    .stats .container{
+        flex-direction: column;
+    }
+    .stats .container .box{
+        flex-basis: 100% ;
+    }
+}
+@media (min-width: 768px) {
+    .stats .container{
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .stats .container .box{
+        flex-basis: 50%;
+    }
+}
+@media (min-width: 991px) {
+    .stats .container{
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .stats .container .box{
+        flex-basis: 25% ;
+    }
+}
+.stats .container .box .icon{
+    width: 30px;
+    height: 30px;
+    border-radius: 59%;
+    background-color: rgba(0, 0, 0, 0.724);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.stats .container .box .info{
+    color: white;
+    text-align: center;
+}
+.stats .container .box h3{
+    padding: 20px;
+    font-size: 40px;
+    font-weight: bold;
+}
+.stats .container .box p{
+    font-size: 12px;
+    padding-bottom: 10px;
+    text-transform: capitalize;
+}
+/* end stats  */
